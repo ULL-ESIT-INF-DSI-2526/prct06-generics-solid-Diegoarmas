@@ -16,6 +16,7 @@ describe("Podcast", () => {
     expect(podcast.episodeNumber).toBe(12);
     expect(podcast.theme).toBe("Tecnología");
     expect(podcast.hostName).toBe("Ana");
+    
     expect(podcast.data()).toEqual({
       programName: "TechTalk",
       episodeNumber: 12,

@@ -12,6 +12,7 @@ import { Reproducible } from "./Reproducible";
  * @throws {Error} Si se intenta acceder a un índice fuera del rango del historial.
  */
 export class History<T extends Reproducible<unknown>> {
+
   private readonly items: T[] = [];
 
   public add(item: T): void {
