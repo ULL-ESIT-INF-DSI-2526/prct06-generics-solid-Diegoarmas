@@ -27,9 +27,14 @@ export class Podcast implements Reproducible<PodcastData> {
   private readonly startDate_: Date;
   private readonly endDate_: Date;
 
-  constructor(programName: string, episodeNumber: number, theme: string, hostName: string,
-    startDate: Date, endDate: Date) {
-
+  constructor(
+    programName: string,
+    episodeNumber: number,
+    theme: string,
+    hostName: string,
+    startDate: Date,
+    endDate: Date,
+  ) {
     this.programName_ = programName;
     this.episodeNumber_ = episodeNumber;
     this.theme_ = theme;
@@ -88,13 +93,12 @@ export class Podcast implements Reproducible<PodcastData> {
   }
 
   public duration(): number {
-    const diff =
-      this.endDate.getTime() - this.startDate.getTime();
+    const diff = this.endDate.getTime() - this.startDate.getTime();
     if (diff < 0) {
       throw new Error(
         "Podcast end date must be greater than or equal to start date",
       );
     }
-    return diff / 1000; 
+    return diff / 1000;
   }
 }

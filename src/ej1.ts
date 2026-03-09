@@ -1,4 +1,4 @@
-export type Affiliation = 'República' | 'Imperio' | 'Sith' | 'Independiente';
+export type Affiliation = "República" | "Imperio" | "Sith" | "Independiente";
 
 export interface IdentifiableByName {
   name: string;
@@ -37,7 +37,8 @@ export interface CollectionCrud<T> {
 }
 
 export interface GalacticRegistry<T>
-  extends CollectionCrud<T>,
+  extends
+    CollectionCrud<T>,
     SearchByName<T>,
     SearchByAffiliation<T>,
     SearchByPowerLevel<T>,
@@ -45,9 +46,9 @@ export interface GalacticRegistry<T>
     SearchByYear<T>,
     SearchByOriginPlanet<T> {}
 
-export abstract class BasicGalacticCollection<T extends IdentifiableByName>
-  implements GalacticRegistry<T>
-{
+export abstract class BasicGalacticCollection<
+  T extends IdentifiableByName,
+> implements GalacticRegistry<T> {
   protected readonly items: T[] = [];
 
   constructor(public readonly collectionName: string) {}
@@ -112,7 +113,8 @@ export abstract class BasicGalacticCollection<T extends IdentifiableByName>
   public findByOriginPlanet(originPlanet: string): T[] {
     const normalizedOriginPlanet = this.normalize(originPlanet);
     return this.items.filter(
-      (item) => this.normalize(this.getOriginPlanet(item)) === normalizedOriginPlanet,
+      (item) =>
+        this.normalize(this.getOriginPlanet(item)) === normalizedOriginPlanet,
     );
   }
 
@@ -137,7 +139,7 @@ export interface JediMaster extends IdentifiableByName {
 
 export class JediMasterCollection extends BasicGalacticCollection<JediMaster> {
   constructor() {
-    super('JediMasterCollection');
+    super("JediMasterCollection");
   }
 
   protected getAffiliation(item: JediMaster): Affiliation {
@@ -171,7 +173,7 @@ export interface Starship extends IdentifiableByName {
 
 export class StarshipCollection extends BasicGalacticCollection<Starship> {
   constructor() {
-    super('StarshipCollection');
+    super("StarshipCollection");
   }
 
   protected getAffiliation(item: Starship): Affiliation {
@@ -205,7 +207,7 @@ export interface Holocron extends IdentifiableByName {
 
 export class HolocronCollection extends BasicGalacticCollection<Holocron> {
   constructor() {
-    super('HolocronCollection');
+    super("HolocronCollection");
   }
 
   protected getAffiliation(item: Holocron): Affiliation {
